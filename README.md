@@ -1,0 +1,1 @@
+The dump of the database and the documentation file for it are located in the folder database.
