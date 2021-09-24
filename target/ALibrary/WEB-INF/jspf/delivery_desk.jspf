@@ -1,0 +1,53 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <td>#</td>
+        <td>Book</td>
+        <td>Status</td>
+        <td>Issue day</td>
+        <c:if test="${sessionScope['role'] eq 'LIBRARIAN'}">
+            <td>Issue a book</td>
+        </c:if>
+        <td>Return day</td>
+        <c:if test="${sessionScope['role'] eq 'LIBRARIAN'}">
+            <td>Get a book</td>
+        </c:if>
+        <td>Penalty</td>
+        <c:if test="${sessionScope['role'] eq 'USER'}">
+            <td>Discard order</td>
+        </c:if>
+    </tr>
+    </thead>
+    <c:set var="deliveryList" value="${deskService.getUserDeliveryDesk(userId)}"/>
+    <c:forEach var="delivery" items="${deliveryList}">
+        <tr>
+            <td>${deliveryList.indexOf(delivery) + 1}</td>
+            <td>${delivery.bookName}</td>
+            <td>${delivery.status}</td>
+            <td>${delivery.issueDate}</td>
+            <c:if test="${sessionScope['role'] eq 'LIBRARIAN'}">
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            Issue
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a href="${pageContext.request.contextPath}/controller?command=CURRENT_DELIVERY_DESK_PAGE&manageAction=issue&deskId=${delivery.id}&bookId=${delivery.bookId}&userId=${param.userId}&userName=${param.userName}&userSurname=${param.userSurname}&term=1d">Library hall</a></li>
+                            <li><a href="${pageContext.request.contextPath}/controller?command=CURRENT_DELIVERY_DESK_PAGE&manageAction=issue&deskId=${delivery.id}&bookId=${delivery.bookId}&userId=${param.userId}&userName=${param.userName}&userSurname=${param.userSurname}&term=30d">Delivery desk</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </c:if>
+            <td>${delivery.returnDate}</td>
+            <c:if test="${sessionScope['role'] eq 'LIBRARIAN'}">
+                <td><a href="${pageContext.request.contextPath}/controller?command=CURRENT_DELIVERY_DESK_PAGE&manageAction=get&deskId=${delivery.id}&bookId=${delivery.bookId}&userId=${param.userId}&userName=${param.userName}&userSurname=${param.userSurname}">Get</a></td>
+            </c:if>
+            <td>${delivery.penalty}</td>
+            <c:if test="${sessionScope['role'] eq 'USER' and delivery.status eq 'ordered'}">
+                <td><a href="${pageContext.request.contextPath}/controller?command=BOOK_VS_DELIVERY_DESK&deskAction=deleteBook&deskId=${delivery.id}&bookId=${delivery.bookId}">
+                    discard</a></td>
+            </c:if>
+        </tr>
+    </c:forEach>
+</table>
