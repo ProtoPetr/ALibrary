@@ -1,0 +1,14 @@
+INSERT INTO author (id,name) values (1, 'Аристотель');
+INSERT INTO author (id,name) values (2, 'Фридрих Ницше');
+INSERT INTO author (id,name) values (3, 'Зигмунд Фрейд');
+INSERT INTO author (id,name) values (4, 'Рудольф Витгенштейн');
+INSERT INTO author (id,name) values (5, 'Гегель');
+INSERT INTO author (id,name) values (6, 'Денис Ритчи');
+INSERT INTO author (id,name) values (7, 'Джошуа Блох');
+INSERT INTO author (id,name) values (8, 'Братья Стругацкие');
+INSERT INTO author (id,name) values (9, 'Станислав Лем');
+INSERT INTO author (id,name) values (10, 'Лифшиц');
+INSERT INTO author (id,name) values (11, 'Сивухин');
+INSERT INTO author (id,name) values (12, 'Рихар Курант');
+INSERT INTO author (id,name) values (13, 'Норберт Винер');
+INSERT INTO author (id,name) values (14, 'Брюс Эккель');

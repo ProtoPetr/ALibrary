@@ -1,0 +1,14 @@
+INSERT INTO book (name, author_id, genre_id, publisher_id, year_of_publishing, count) values ('Никомахова этика', 1, 1, 2, 1998, 20);
+INSERT INTO book (name, author_id, genre_id, publisher_id, year_of_publishing, count) values ('Гениология Морали', 2, 1, 2, 2008, 20);
+INSERT INTO book (name, author_id, genre_id, publisher_id, year_of_publishing, count) values ('Моисей и монотеизм', 2, 3, 3, 2013, 20);
+INSERT INTO book (name, author_id, genre_id, publisher_id, year_of_publishing, count) values ('Логико-философский трактат', 4, 1, 1, 2000, 20);
+INSERT INTO book (name, author_id, genre_id, publisher_id, year_of_publishing, count) values ('Феноменология духа', 5, 1, 2, 1991, 20);
+INSERT INTO book (name, author_id, genre_id, publisher_id, year_of_publishing, count) values ('Язык программирования С', 6, 5, 3, 2009, 20);
+INSERT INTO book (name, author_id, genre_id, publisher_id, year_of_publishing, count) values ('Эффективное программирование', 7, 5, 3, 2012, 20);
+INSERT INTO book (name, author_id, genre_id, publisher_id, year_of_publishing, count) values ('Трудно быть Богом', 8, 7, 3, 2003, 20);
+INSERT INTO book (name, author_id, genre_id, publisher_id, year_of_publishing, count) values ('Сумма технологии', 9, 7, 3, 2019, 20);
+INSERT INTO book (name, author_id, genre_id, publisher_id, year_of_publishing, count) values ('Электродинамика', 10, 4, 1, 1958, 20);
+INSERT INTO book (name, author_id, genre_id, publisher_id, year_of_publishing, count) values ('Электричество и магнетизм', 11, 4, 1, 2007, 20);
+INSERT INTO book (name, author_id, genre_id, publisher_id, year_of_publishing, count) values ('Что такое математика', 12, 3, 1, 1988, 20);
+INSERT INTO book (name, author_id, genre_id, publisher_id, year_of_publishing, count) values ('Кибернетика или управление и связь в животном и машине', 13, 5, 3, 1964, 20);
+INSERT INTO book (name, author_id, genre_id, publisher_id, year_of_publishing, count) values ('Философия Java', 14, 5, 3, 2019, 20);
