@@ -17,4 +17,39 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+
+    <tag>
+        <name>pagination</name>
+        <tag-class>com.epam.web_jstl.PaginationTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <name>pageBookList</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>com.epam.entity.Book</type>
+        </attribute>
+        <attribute>
+            <name>var</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>totalPages</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>int</type>
+        </attribute>
+        <attribute>
+            <name>currentPage</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>int</type>
+        </attribute>
+        <attribute>
+            <name>pageItemsCount</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>int</type>
+        </attribute>
+    </tag>
 </taglib>

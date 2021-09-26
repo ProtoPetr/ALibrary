@@ -1,0 +1,20 @@
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+
+<div class="col">
+    <div class="card h-100">
+        <img src="${pageContext.request.contextPath}/controller?command=SHOW_IMAGE&index=${sessionScope['currentBookList'].indexOf(book)}"
+             class="card-img-top" alt="#">
+        <div class="card-body">
+            <h5 class="card-title">${book.getName()}</h5>
+            <p class="card-text"><strong>Издательство:</strong> ${book.getPublisher()}</p>
+            <p class="card-text"><strong>Год издания:</strong> ${book.getYearOfPublishing()}</p>
+            <p class="card-text"><strong>Автор:</strong> ${book.getAuthor()}</p>
+            <p>
+                <a href="${pageContext.request.contextPath}/controller?command=BOOK_VS_DELIVERY_DESK&deskAction=addBook&bookId=${book.getId()}">
+                    Добавить в абонемент</a></p>
+            <c:if test="${sessionScope['addBookToDeskStatus'] ne null and book.getId() eq sessionScope['bookId']}">
+                <p>${sessionScope['addBookToDeskStatus']}</p>
+            </c:if>
+        </div>
+    </div>
+</div>

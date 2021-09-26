@@ -19,9 +19,6 @@
         </div>
         <div class="col-4">
             <ptl:welcome name="${sessionScope['login']}"/>
-<%--            <br>--%>
-<%--            <h5>Welcome, ${sessionScope['login']}!</h5>--%>
-<%--            <br>--%>
         </div>
         <div class="col-2"><br><h5><a href="${pageContext.request.contextPath}/controller?command=USER_ACCOUNT_PAGE">Personal
             account</a></h5><br></div>
@@ -74,60 +71,89 @@
             </div>
         </div>
         <div class="col-9">
-            <div class="justify-content-center align-items-center">
+            <div class="row justify-content-center">
                 <jsp:useBean id="letterList" class="com.epam.supplies.LetterList" scope="application"/>
                 <c:forEach var="letter" items="${letterList.russianLetters}">
-                    <c:choose>
-                        <c:when test="${sessionScope['searchLetter'] ne null && sessionScope['searchLetter'].toUpperCase().charAt(0) eq letter}">
-                            <a style="color:red; width: 100%; text-decoration: none; font-size: 15px; font-weight: bold; margin: 5px;"
-                               href="${pageContext.request.contextPath}/controller?command=USER_PAGE&letter=${letter}">${letter}</a>
-                        </c:when>
-                        <c:otherwise>
-                            <a style="color: #4d6cd3; width: 100%; text-decoration: none; font-size: 15px; font-weight: bold; margin: 5px;"
-                               href="${pageContext.request.contextPath}/controller?command=USER_PAGE&letter=${letter}">${letter}</a>
-                        </c:otherwise>
-                    </c:choose>
+                    <div class="col">
+                        <c:choose>
+                            <c:when test="${sessionScope['searchLetter'] ne null && sessionScope['searchLetter'].toUpperCase().charAt(0) eq letter}">
+                                <a style="color:red; width: 100%; text-decoration: none; font-size: 15px; font-weight: bold;"
+                                   href="${pageContext.request.contextPath}/controller?command=USER_PAGE&letter=${letter}">${letter}</a>
+                            </c:when>
+                            <c:otherwise>
+                                <a style="color: #4d6cd3; width: 100%; text-decoration: none; font-size: 15px; font-weight: bold;"
+                                   href="${pageContext.request.contextPath}/controller?command=USER_PAGE&letter=${letter}">${letter}</a>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
                 </c:forEach>
             </div>
             <div class="row mt-3">
-                <div class="col-10">
+                <div class="col-8">
                     <h5>Найдено книг: ${sessionScope['currentBookList'].size()}</h5>
                 </div>
                 <div class="col-2">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                            Oder by
+                            Books on page
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/controller?command=USER_PAGE&sortAction=sortByName">Name</a></li>
-                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/controller?command=USER_PAGE&sortAction=sortByAuthor">Author</a></li>
-                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/controller?command=USER_PAGE&sortAction=sortByPublisher">Publisher</a></li>
-                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/controller?command=USER_PAGE&sortAction=sortByYear">Year of publishing</a></li>
+                            <li><a class="dropdown-item"
+                                   href="${pageContext.request.contextPath}/controller?command=USER_PAGE&pagination=true&booksPerPage=4">4</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                   href="${pageContext.request.contextPath}/controller?command=USER_PAGE&pagination=true&booksPerPage=12">12</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                   href="${pageContext.request.contextPath}/controller?command=USER_PAGE&pagination=true&booksPerPage=36">36</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                   href="${pageContext.request.contextPath}/controller?command=USER_PAGE&pagination=false">all</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
-                <c:forEach var="book" items="${sessionScope['currentBookList']}">
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="${pageContext.request.contextPath}/controller?command=SHOW_IMAGE&index=${sessionScope['currentBookList'].indexOf(book)}"
-                                 class="card-img-top" alt="#">
-                            <div class="card-body">
-                                <h5 class="card-title">${book.getName()}</h5>
-                                <p class="card-text"><strong>Издательство:</strong> ${book.getPublisher()}</p>
-                                <p class="card-text"><strong>Год издания:</strong> ${book.getYearOfPublishing()}</p>
-                                <p class="card-text"><strong>Автор:</strong> ${book.getAuthor()}</p>
-                                <p><a href="${pageContext.request.contextPath}/controller?command=BOOK_VS_DELIVERY_DESK&deskAction=addBook&bookId=${book.getId()}">
-                                    Добавить в абонемент</a></p>
-                                <c:if test="${sessionScope['addBookToDeskStatus'] ne null and book.getId() eq sessionScope['bookId']}">
-                                    <p>${sessionScope['addBookToDeskStatus']}</p>
-                                </c:if>
-                            </div>
-                        </div>
+                <div class="col-2">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            Oder by
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                            <li><a class="dropdown-item"
+                                   href="${pageContext.request.contextPath}/controller?command=USER_PAGE&sortAction=sortByName">Name</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                   href="${pageContext.request.contextPath}/controller?command=USER_PAGE&sortAction=sortByAuthor">Author</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                   href="${pageContext.request.contextPath}/controller?command=USER_PAGE&sortAction=sortByPublisher">Publisher</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                   href="${pageContext.request.contextPath}/controller?command=USER_PAGE&sortAction=sortByYear">Year
+                                of publishing</a></li>
+                        </ul>
                     </div>
-                </c:forEach>
+                </div>
+                <div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
+                    <c:choose>
+                        <c:when test="${sessionScope['pagination'] eq true}">
+                            <ptl:pagination totalPages="${sessionScope['totalPages']}"
+                                            currentPage="${sessionScope['currentPage']}"
+                                            pageBookList="${sessionScope['pageBookList']}"
+                                            var="book"
+                                            pageItemsCount="${sessionScope['pageItemsCount']}">
+                                <%@include file="../../WEB-INF/jspf/book_card.jspf" %>
+                            </ptl:pagination>
+                        </c:when>
+                        <c:otherwise>
+                            <c:forEach var="book" items="${sessionScope['currentBookList']}">
+                                <%@include file="../../WEB-INF/jspf/book_card.jspf" %>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
             </div>
         </div>
     </div>
