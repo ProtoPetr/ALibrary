@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ taglib prefix="ptl" uri="/WEB-INF/tld/taglib.tld" %>
 
 <html>
 <head>
@@ -17,9 +18,10 @@
             <br>
         </div>
         <div class="col-4">
-            <br>
-            <h5>Welcome, ${sessionScope['login']}!</h5>
-            <br>
+            <ptl:welcome name="${sessionScope['login']}"/>
+<%--            <br>--%>
+<%--            <h5>Welcome, ${sessionScope['login']}!</h5>--%>
+<%--            <br>--%>
         </div>
         <div class="col-2"><br><h5><a href="${pageContext.request.contextPath}/controller?command=USER_ACCOUNT_PAGE">Personal
             account</a></h5><br></div>
