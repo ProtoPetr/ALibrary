@@ -43,7 +43,11 @@ public class PaginationTag extends BodyTagSupport {
             Object next = it.next();
             pageContext.setAttribute(var, next);
             pageContext.setAttribute("it", it);
-            System.out.println(pageBookList);
+            try {
+                pageContext.getOut().write("<div class=\"row row-cols-1 row-cols-md-4 g-4 mt-3\">");
+            } catch (IOException e) {
+                throw new JspTagException(e.getMessage());
+            }
             return EVAL_BODY_INCLUDE;
         }
         return SKIP_BODY;
@@ -64,7 +68,11 @@ public class PaginationTag extends BodyTagSupport {
     public int doEndTag() throws JspException {
         try {
             pageContext.getOut().write("</div>");
+            pageContext.getOut().write("<div class=\"row justify-content-center\">");
+            pageContext.getOut().write("<div class=\"col-4\">");
             pageContext.getOut().write("<nav aria-label=\"Page navigation example\">");
+            pageContext.getOut().write("<br>");
+            pageContext.getOut().write("<br>");
             pageContext.getOut().write("<ul class=\"pagination\">");
 
             if (totalPages == 0) {
@@ -102,6 +110,10 @@ public class PaginationTag extends BodyTagSupport {
 
             pageContext.getOut().write("</ul>");
             pageContext.getOut().write("</nav>");
+            pageContext.getOut().write("</div>");
+            pageContext.getOut().write("</div>");
+            pageContext.getOut().write("<br>");
+            pageContext.getOut().write("<br>");
         } catch (IOException e) {
             throw new JspTagException(e.getMessage());
         }

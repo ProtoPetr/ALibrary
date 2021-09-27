@@ -113,24 +113,16 @@ public abstract class GenericDao<T> {
         }
     }
 
-    protected <V> void deleteByField(Connection connection, String sql, V value) throws SQLException {
+    @SafeVarargs
+    protected final <V> void deleteByField(Connection connection, String sql, V... values) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
         try {
             ps = connection.prepareStatement(sql);
-            switch (value.getClass().getSimpleName()) {
-                case "Integer":
-                    ps.setInt(1, (Integer) value);
-                    break;
-                case "Long":
-                    ps.setLong(1, (Long) value);
-                    break;
-                case "String":
-                    ps.setString(1, (String) value);
-                    break;
-                default:
-                    throw new IllegalArgumentException();
+            for (int i = 1; i <= values.length; i++) {
+                V value = values[i - 1];
+                dispatchType(ps, i, value);
             }
             if (ps.executeUpdate() == 0)
                 throw new SQLException("Not deleted");

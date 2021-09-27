@@ -136,24 +136,26 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
-                    <c:choose>
-                        <c:when test="${sessionScope['pagination'] eq true}">
-                            <ptl:pagination totalPages="${sessionScope['totalPages']}"
-                                            currentPage="${sessionScope['currentPage']}"
-                                            pageBookList="${sessionScope['pageBookList']}"
-                                            var="book"
-                                            pageItemsCount="${sessionScope['pageItemsCount']}">
-                                <%@include file="../../WEB-INF/jspf/book_card.jspf" %>
-                            </ptl:pagination>
-                        </c:when>
-                        <c:otherwise>
+
+                <c:choose>
+                    <c:when test="${sessionScope['pagination'] eq true}">
+                        <ptl:pagination totalPages="${sessionScope['totalPages']}"
+                                        currentPage="${sessionScope['currentPage']}"
+                                        pageBookList="${sessionScope['pageBookList']}"
+                                        var="book"
+                                        pageItemsCount="${sessionScope['pageItemsCount']}">
+                            <%@include file="../../WEB-INF/jspf/book_card.jspf" %>
+                        </ptl:pagination>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
                             <c:forEach var="book" items="${sessionScope['currentBookList']}">
                                 <%@include file="../../WEB-INF/jspf/book_card.jspf" %>
                             </c:forEach>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+
             </div>
         </div>
     </div>

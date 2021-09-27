@@ -94,21 +94,7 @@ public class MysqlDeliveryDeskDao extends GenericDao<DeliveryDesk> implements De
 
     @Override
     public void delete(Connection connection, String sql, long deliveryDeskId, long bookId) throws SQLException {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        try {
-            ps = connection.prepareStatement(sql);
-            int k = 1;
-            ps.setLong(k++, deliveryDeskId);
-            ps.setLong(k, bookId);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            logger.error(e.getMessage(), e);
-            throw new SQLException();
-        } finally {
-            closeStatementsAndResultSet(ps, rs);
-        }
+        deleteByField(connection, sql, deliveryDeskId, bookId);
     }
 
     @Override

@@ -44,11 +44,12 @@ public class UserPageCommand implements Command {
             list = bss.getAllBooks();
         }
 
-        req.getSession().setAttribute("currentBookList", list);
+        if (req.getSession().getAttribute("currentBookList") == null) {
+            req.getSession().setAttribute("currentBookList", list);
+        }
 
         List<Book> currentList = (List<Book>) req.getSession().getAttribute("currentBookList");
 
-        System.out.println(currentList);
         String sortAction = req.getParameter("sortAction");
         req.getSession().setAttribute("sortAction", sortAction);
 
