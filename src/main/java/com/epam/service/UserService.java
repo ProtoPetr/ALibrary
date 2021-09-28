@@ -4,6 +4,10 @@ import com.epam.entity.User;
 
 import java.util.List;
 
+/**
+ * Interface declares methods for work with current entity
+ * and contains specific logic
+ */
 public interface UserService {
     void createUser(User user);
     void updateUserData(User user);

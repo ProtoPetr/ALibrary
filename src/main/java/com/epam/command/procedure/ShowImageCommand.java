@@ -11,9 +11,16 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+/**
+ * This class implements Command interface
+ */
 public class ShowImageCommand implements Command {
     private static final Logger logger = LogManager.getLogger(ShowImageCommand.class);
 
+    /**
+     * Method send response with current picture
+     * depends on request parameter `index`
+     */
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
         String condition = "procedure";

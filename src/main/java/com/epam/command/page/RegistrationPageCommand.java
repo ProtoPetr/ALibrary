@@ -5,6 +5,9 @@ import com.epam.command.Command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * This class implements Command interface
+ */
 public class RegistrationPageCommand implements Command {
 
     @Override

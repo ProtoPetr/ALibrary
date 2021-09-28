@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * This class displays the front-controller pattern
+ */
 public class FrontController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,6 +29,10 @@ public class FrontController extends HttpServlet {
         }
     }
 
+    /**
+     * This method, using a factory receive specific command
+     * and calls the execute method on it
+     */
     private String handleRequest(HttpServletRequest req, HttpServletResponse resp) {
         Command command = CommandFactory.getCommand(req);
         return command.execute(req, resp);

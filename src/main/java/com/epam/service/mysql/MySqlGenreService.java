@@ -12,11 +12,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class implements GenreService interface
+ * the interface is implemented according to the needs of the view layer
+ */
 public class MySqlGenreService implements GenreService {
     private static final Logger logger = LogManager.getLogger(MySqlGenreService.class);
     private static GenreDao genreDao;
     private static DaoFactory daoFactory;
 
+    /**
+     * Block initializes objects for working with dao layer
+     */
     {
         try {
             daoFactory = DaoFactory.getDaoFactory("MySQL");
@@ -26,6 +33,9 @@ public class MySqlGenreService implements GenreService {
         }
     }
 
+    /**
+     * The method find all genres
+     */
     @Override
     public List<Genre> findAllGenres() {
         List<Genre> list = new ArrayList<>();

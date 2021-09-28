@@ -4,6 +4,10 @@ import com.epam.entity.DeliveryDesk;
 
 import java.util.List;
 
+/**
+ * Interface declares methods for work with current entity
+ * and contains specific logic
+ */
 public interface DeliveryDeskService {
     List<DeliveryDesk> getUserDeliveryDesk(long userId);
     void addBookToDeliveryDesk(long userId, long bookId);

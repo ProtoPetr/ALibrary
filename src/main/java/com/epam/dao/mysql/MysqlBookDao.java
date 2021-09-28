@@ -10,6 +10,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * This class inherits from GenericDao<T> and types it by Book
+ * implements BookDao interface
+ */
 public class MysqlBookDao extends GenericDao<Book> implements BookDao {
     private static MysqlBookDao instance;
 
@@ -68,6 +72,9 @@ public class MysqlBookDao extends GenericDao<Book> implements BookDao {
         deleteByField(connection, sql, Id);
     }
 
+    /**
+     * The method forms the entity based on resultSet
+     */
     @Override
     protected Book mapToEntity(ResultSet rs) throws SQLException {
         Book book = new Book();
@@ -82,6 +89,9 @@ public class MysqlBookDao extends GenericDao<Book> implements BookDao {
         return book;
     }
 
+    /**
+     * The method forms the resultSet based on entity
+     */
     @Override
     protected void mapFromEntity(PreparedStatement ps, Book book) throws SQLException {
         ps.setString(1, book.getName());

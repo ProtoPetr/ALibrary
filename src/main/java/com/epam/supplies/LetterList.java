@@ -1,7 +1,14 @@
 package com.epam.supplies;
 
+/**
+ * This class contains letters of alphabet
+ * and way to get them
+ */
 public class LetterList {
 
+    /**
+     * Method returned array of letters
+     */
     public char[] getRussianLetters(){
         char[] letters = new char[33];
         letters[0]='А';

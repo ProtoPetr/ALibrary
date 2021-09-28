@@ -2,7 +2,11 @@ package com.epam.entity;
 
 import java.io.Serializable;
 
-public class role implements Serializable {
+/**
+ *This class defines the role entity
+ * and provides an interface for working with it
+ */
+public class Role implements Serializable {
     private long id;
     private String name;
 

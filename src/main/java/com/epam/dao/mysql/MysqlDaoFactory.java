@@ -11,6 +11,12 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+/**
+ * This class inherits from DaoFactory
+ * Contains implementation of based class that return implementation of dao interfaces
+ * for working with a specific entity
+ * and setting up a database connection
+ */
 public class MysqlDaoFactory extends DaoFactory {
     private static final Logger logger = LogManager.getLogger(MysqlDaoFactory.class);
     private static MysqlDaoFactory instance;

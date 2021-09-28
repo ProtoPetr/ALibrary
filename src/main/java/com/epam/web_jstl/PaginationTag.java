@@ -9,6 +9,11 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * This class creates a tag
+ * for displaying pagination
+ * of current object
+ */
 public class PaginationTag extends BodyTagSupport {
     List<Book> pageBookList;
     String var;

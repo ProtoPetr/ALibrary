@@ -6,6 +6,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Interface declares crud methods for current entity
+ */
 public interface DeliveryDeskDao {
     void update(Connection connection, String sql, long userId, long bookId) throws SQLException;
     void create(Connection connection, String sql, long bookId, long deliveryDeskId) throws SQLException;

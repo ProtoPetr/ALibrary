@@ -2,6 +2,10 @@ package com.epam.entity;
 
 import java.io.Serializable;
 
+/**
+ *This class defines the author entity
+ * and provides an interface for working with it
+ */
 public class Author implements Serializable {
     private long id;
     private String name;

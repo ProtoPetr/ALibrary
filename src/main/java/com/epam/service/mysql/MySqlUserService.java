@@ -12,11 +12,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class implements UserService interface
+ * the interface is implemented according to the needs of the view layer
+ */
 public class MySqlUserService implements UserService {
     private static final Logger logger = LogManager.getLogger(MySqlUserService.class);
     private static UserDao userDao;
     private static DaoFactory daoFactory;
 
+    /**
+     * Block initializes objects for working with dao layer
+     */
     {
         try {
             daoFactory = DaoFactory.getDaoFactory("MySQL");
@@ -26,6 +33,9 @@ public class MySqlUserService implements UserService {
         }
     }
 
+    /**
+     * The method updates the fields of a current user
+     */
     @Override
     public void updateUserData(User user) {
         try (Connection connection = daoFactory.getConnection()) {
@@ -35,6 +45,9 @@ public class MySqlUserService implements UserService {
         }
     }
 
+    /**
+     * The method find user by id
+     */
     @Override
     public User findUserById(long id) {
         User user = new User();
@@ -46,6 +59,9 @@ public class MySqlUserService implements UserService {
         return user;
     }
 
+    /**
+     * The method find user by name or surname
+     */
     @Override
     public List<User> getUsersBySearch(String searchStr) {
         List<User> list = new ArrayList<>();
@@ -58,6 +74,9 @@ public class MySqlUserService implements UserService {
         return list;
     }
 
+    /**
+     * The method add new user in database
+     */
     @Override
     public void createUser(User user) {
         try (Connection connection = daoFactory.getConnection()) {
@@ -67,6 +86,10 @@ public class MySqlUserService implements UserService {
         }
     }
 
+    /**
+     * The predicate method find user by login and password
+     * return true or false
+     */
     @Override
     public boolean userIsExist(String login, String password) {
         boolean result = false;
@@ -79,6 +102,9 @@ public class MySqlUserService implements UserService {
         return result;
     }
 
+    /**
+     * The method find all users
+     */
     @Override
     public List<User> findAllUsers() {
         List<User> list = new ArrayList<>();
@@ -90,6 +116,9 @@ public class MySqlUserService implements UserService {
         return list;
     }
 
+    /**
+     * The method find all users with `user` role
+     */
     @Override
     public List<User> findAllLibraryUsers() {
         List<User> list = new ArrayList<>();
@@ -101,6 +130,10 @@ public class MySqlUserService implements UserService {
         return list;
     }
 
+    /**
+     * The method find user by login and password
+     * return User object
+     */
     @Override
     public User getUserByLoginPassword(String login, String password) {
         User user = new User();
@@ -112,6 +145,9 @@ public class MySqlUserService implements UserService {
         return user;
     }
 
+    /**
+     * The method return role of user by login and password
+     */
     @Override
     public User.ROLE getRoleByLoginPassword(String login, String password) {
         User.ROLE role = User.ROLE.UNKNOWN;
@@ -126,7 +162,7 @@ public class MySqlUserService implements UserService {
 
 
     /**
-     * SQL queries for User entity.
+     * SQL queries for User entity
      */
     enum USER_SQL {
         UPDATE_USER_DATA("UPDATE user SET name = ?, surname = ?, login = ?, password = ?, role_id = (select id from role where name = ?), "

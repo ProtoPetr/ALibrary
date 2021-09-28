@@ -9,6 +9,10 @@ import org.apache.logging.log4j.Logger;
 import java.sql.*;
 import java.util.List;
 
+/**
+ * This class inherits from GenericDao<T> and types it by DeliveryDesk
+ * implements DeliveryDeskDao interface
+ */
 public class MysqlDeliveryDeskDao extends GenericDao<DeliveryDesk> implements DeliveryDeskDao {
     private static final Logger logger = LogManager.getLogger(MysqlDeliveryDeskDao.class);
     private static MysqlDeliveryDeskDao instance;
@@ -97,6 +101,9 @@ public class MysqlDeliveryDeskDao extends GenericDao<DeliveryDesk> implements De
         deleteByField(connection, sql, deliveryDeskId, bookId);
     }
 
+    /**
+     * The method forms the entity based on resultSet
+     */
     @Override
     protected DeliveryDesk mapToEntity(ResultSet rs) throws SQLException {
         DeliveryDesk deliveryDesk = new DeliveryDesk();
@@ -112,6 +119,9 @@ public class MysqlDeliveryDeskDao extends GenericDao<DeliveryDesk> implements De
         return deliveryDesk;
     }
 
+    /**
+     * The method forms the resultSet based on entity
+     */
     @Override
     protected void mapFromEntity(PreparedStatement ps, DeliveryDesk deliveryDesk) throws SQLException {
         ps.setLong(1, deliveryDesk.getUserId());

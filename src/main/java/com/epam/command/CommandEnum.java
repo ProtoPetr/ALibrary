@@ -5,6 +5,10 @@ import com.epam.command.page.BookDeliveryDeskCommand;
 import com.epam.command.page.CreateUserCommand;
 import com.epam.command.procedure.ShowImageCommand;
 
+/**
+ * This enum contains commands which include instances
+ * of Command interface implementations
+ */
 public enum CommandEnum {
     INDEX_PAGE(new IndexPageCommand()),
     ADMIN_PAGE(new AdminPageCommand()),
@@ -26,6 +30,9 @@ public enum CommandEnum {
         this.command = command;
     }
 
+    /**
+     * Method return current command object
+     */
     public Command getCommand() {
         return command;
     }

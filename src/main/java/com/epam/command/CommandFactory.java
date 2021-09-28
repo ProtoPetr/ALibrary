@@ -5,12 +5,19 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * This class present factory pattern
+ * and dispatch commands
+ */
 public final class CommandFactory {
     private static final Logger logger = LogManager.getLogger(CommandFactory.class);
 
     private CommandFactory() {
     }
 
+    /**
+     * Method return current command depends on request
+     */
     public static Command getCommand(HttpServletRequest req) {
         String command = req.getParameter("command");
         Command com;

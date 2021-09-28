@@ -3,6 +3,9 @@ package com.epam.filter;
 import javax.servlet.*;
 import java.io.IOException;
 
+/**
+ * This filter sets the default encoding for request and response
+ */
 public class CharacterSetFilter implements Filter {
 
     @Override

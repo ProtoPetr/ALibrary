@@ -6,6 +6,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Interface declares crud methods for current entity
+ */
 public interface BookDao {
     Book findById(Connection connection, String sql, long id) throws SQLException;
 

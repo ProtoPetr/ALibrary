@@ -10,6 +10,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * This class inherits from GenericDao<T> and types it by User
+ * implements UserDao interface
+ */
 public class MysqlUserDao extends GenericDao<User> implements UserDao {
     private static MysqlUserDao instance;
 
@@ -76,6 +80,9 @@ public class MysqlUserDao extends GenericDao<User> implements UserDao {
         return list.get(0);
     }
 
+    /**
+     * The method forms the entity based on resultSet
+     */
     @Override
     protected User mapToEntity(ResultSet rs) throws SQLException {
         User user = new User();
@@ -91,6 +98,9 @@ public class MysqlUserDao extends GenericDao<User> implements UserDao {
         return user;
     }
 
+    /**
+     * The method forms the resultSet based on entity
+     */
     @Override
     protected void mapFromEntity(PreparedStatement ps, User user) throws SQLException {
         ps.setString(1, user.getName());

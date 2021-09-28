@@ -6,6 +6,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Interface declares crud methods for current entity
+ */
 public interface UserDao {
     List<User> findByName(Connection connection, String sql, String name) throws SQLException;
 

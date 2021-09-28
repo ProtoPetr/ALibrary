@@ -5,6 +5,10 @@ import com.epam.supplies.SearchType;
 
 import java.util.List;
 
+/**
+ * Interface declares methods for work with current entity
+ * and contains specific logic
+ */
 public interface BookService {
 
     void createBook(Book book);

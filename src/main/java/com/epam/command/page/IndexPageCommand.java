@@ -6,7 +6,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * This class implements Command interface
+ */
 public class IndexPageCommand implements Command {
+
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
 

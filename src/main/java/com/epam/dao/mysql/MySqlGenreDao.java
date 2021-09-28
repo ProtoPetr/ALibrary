@@ -10,6 +10,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * This class inherits from GenericDao<T> and types it by Genre
+ * implements GenreDao interface
+ */
 public class MySqlGenreDao extends GenericDao<Genre> implements GenreDao {
     private static MySqlGenreDao instance;
 
@@ -43,6 +47,9 @@ public class MySqlGenreDao extends GenericDao<Genre> implements GenreDao {
         return id;
     }
 
+    /**
+     * The method forms the entity based on resultSet
+     */
     @Override
     protected Genre mapToEntity(ResultSet rs) throws SQLException {
         Genre genre = new Genre();
@@ -51,6 +58,9 @@ public class MySqlGenreDao extends GenericDao<Genre> implements GenreDao {
         return genre;
     }
 
+    /**
+     * The method forms the resultSet based on entity
+     */
     @Override
     protected void mapFromEntity(PreparedStatement ps, Genre genre) throws SQLException {
         ps.setString(1, genre.getName());

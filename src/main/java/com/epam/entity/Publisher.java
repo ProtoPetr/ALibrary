@@ -2,6 +2,10 @@ package com.epam.entity;
 
 import java.io.Serializable;
 
+/**
+ *This class defines the publisher entity
+ * and provides an interface for working with it
+ */
 public class Publisher implements Serializable {
     private long id;
     private String name;

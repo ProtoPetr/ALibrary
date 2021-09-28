@@ -9,6 +9,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * This class inherits from GenericDao<T> and types it by Author
+ * implements AuthorDao interface
+ */
 public class MysqlAuthorDao extends GenericDao<Author> implements AuthorDao {
     private static MysqlAuthorDao instance;
 
@@ -37,6 +41,9 @@ public class MysqlAuthorDao extends GenericDao<Author> implements AuthorDao {
         return id;
     }
 
+    /**
+     * The method forms the entity based on resultSet
+     */
     @Override
     protected Author mapToEntity(ResultSet rs) throws SQLException {
         Author author = new Author();
@@ -45,7 +52,9 @@ public class MysqlAuthorDao extends GenericDao<Author> implements AuthorDao {
         return author;
     }
 
-
+    /**
+     * The method forms the resultSet based on entity
+     */
     @Override
     protected void mapFromEntity(PreparedStatement ps, Author author) throws SQLException {
         ps.setString(1, author.getName());

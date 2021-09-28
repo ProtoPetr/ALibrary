@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * This filter is used to define the user's role
+ * and grant access levels
+ */
 public class AuthFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest,
@@ -25,7 +29,7 @@ public class AuthFilter implements Filter {
 
         final HttpSession session = req.getSession();
 
-        //Logged user.
+        //Logged user
         if (session.getAttribute("login") != null &&
                 session.getAttribute("password") != null) {
 
@@ -49,10 +53,10 @@ public class AuthFilter implements Filter {
     }
 
     /**
-     * Move user to menu.
-     * If access 'admin' move to admin menu.
-     * If access 'user' move to user menu.
-     * If access 'librarian' move to librarian menu.
+     * Move user to menu
+     * If access 'admin' move to admin menu
+     * If access 'user' move to user menu
+     * If access 'librarian' move to librarian menu
      */
     private void moveToMenu(final HttpServletRequest req,
                             final HttpServletResponse res,

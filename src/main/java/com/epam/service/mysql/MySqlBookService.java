@@ -16,6 +16,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class implements BookService interface
+ * the interface is implemented according to the needs of the view layer
+ */
 public class MySqlBookService implements BookService {
     private static final Logger logger = LogManager.getLogger(MySqlBookService.class);
     private static AuthorDao authorDao;
@@ -24,6 +28,9 @@ public class MySqlBookService implements BookService {
     private static BookDao bookDao;
     private static DaoFactory daoFactory;
 
+    /**
+     * Block initializes objects for working with dao layer
+     */
     {
         try {
             daoFactory = DaoFactory.getDaoFactory("MySQL");
@@ -36,6 +43,12 @@ public class MySqlBookService implements BookService {
         }
     }
 
+    /**
+     * The method add new book in database
+     * if book author is not exist in database - in author table add new author
+     * if book genre is not exist in database - in genre table add new genre
+     * if book publisher is not exist in database - in publisher table add new publisher
+     */
     @Override
     public void createBook(Book book) {
         Connection connection = null;
@@ -69,6 +82,12 @@ public class MySqlBookService implements BookService {
         }
     }
 
+    /**
+     * The method updates the fields of a current book
+     * if book author is not exist in database - in author table add new author
+     * if book genre is not exist in database - in genre table add new genre
+     * if book publisher is not exist in database - in publisher table add new publisher
+     */
     @Override
     public void updateBook(Book book) {
         Connection connection = null;
@@ -102,6 +121,9 @@ public class MySqlBookService implements BookService {
         }
     }
 
+    /**
+     * The method delete current book by id
+     */
     @Override
     public void deleteBook(long id) {
         try (Connection connection = daoFactory.getConnection()) {
@@ -111,6 +133,9 @@ public class MySqlBookService implements BookService {
         }
     }
 
+    /**
+     * The method find book by id
+     */
     @Override
     public Book getBookById(long id) {
         Book book = new Book();
@@ -126,6 +151,11 @@ public class MySqlBookService implements BookService {
         return book;
     }
 
+    /**
+     * The method find book by fields:
+     * name of author
+     * name of book
+     */
     @Override
     public List<Book> getBooksBySearch(String searchStr, SearchType type) {
         List<Book> list = new ArrayList<>();
@@ -148,6 +178,9 @@ public class MySqlBookService implements BookService {
         return list;
     }
 
+    /**
+     * The method find book by first letter
+     */
     @Override
     public List<Book> getBooksByLetter(String letter) {
         List<Book> list = new ArrayList<>();
@@ -159,6 +192,9 @@ public class MySqlBookService implements BookService {
         return list;
     }
 
+    /**
+     * The method find all books by genre id
+     */
     @Override
     public List<Book> getBooksByGenreId(long id) {
         List<Book> list = new ArrayList<>();
@@ -170,6 +206,9 @@ public class MySqlBookService implements BookService {
         return list;
     }
 
+    /**
+     * The method find all books
+     */
     @Override
     public List<Book> getAllBooks() {
         List<Book> list = new ArrayList<>();
@@ -181,6 +220,10 @@ public class MySqlBookService implements BookService {
         return list;
     }
 
+    /**
+     * The method find all books by genre id
+     * oder by name of book
+     */
     @Override
     public List<Book> getAllBooksSortedByName() {
         List<Book> list = new ArrayList<>();
@@ -192,6 +235,10 @@ public class MySqlBookService implements BookService {
         return list;
     }
 
+    /**
+     * The method find all books by genre id
+     * oder by author of book
+     */
     @Override
     public List<Book> getAllBooksSortedByAuthor() {
         List<Book> list = new ArrayList<>();
@@ -203,6 +250,10 @@ public class MySqlBookService implements BookService {
         return list;
     }
 
+    /**
+     * The method find all books by genre id
+     * oder by publisher of book
+     */
     @Override
     public List<Book> getAllBooksSortedByPublisher() {
         List<Book> list = new ArrayList<>();
@@ -214,6 +265,10 @@ public class MySqlBookService implements BookService {
         return list;
     }
 
+    /**
+     * The method find all books by genre id
+     * oder by publish year of book
+     */
     @Override
     public List<Book> getAllBooksSortedByYearOfPublishing() {
         List<Book> list = new ArrayList<>();
@@ -226,7 +281,7 @@ public class MySqlBookService implements BookService {
     }
 
     /**
-     * SQL queries for Book entity.
+     * SQL queries for Book entity
      */
     enum Book_SQL {
         UPDATE_BOOK("UPDATE book SET name = ?, author_id = (SELECT id FROM author WHERE name = ?), genre_id = (SELECT id FROM genre WHERE name = ?), "

@@ -5,6 +5,12 @@ import com.epam.dao.mysql.MysqlDaoFactory;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+/**
+ * This abstract class displays the abstract dao factory pattern
+ * Contains a declaration of abstract methods that return implementation of interfaces
+ * for working with a specific entity
+ * and declare set up a database connection
+ */
 public abstract class DaoFactory {
 
     public static DaoFactory getDaoFactory(String name) {

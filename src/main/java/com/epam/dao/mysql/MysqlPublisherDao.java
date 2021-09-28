@@ -9,6 +9,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * This class inherits from GenericDao<T> and types it by Publisher
+ * implements PublisherDao interface
+ */
 public class MysqlPublisherDao extends GenericDao<Publisher> implements PublisherDao {
     private static MysqlPublisherDao instance;
 
@@ -37,6 +41,9 @@ public class MysqlPublisherDao extends GenericDao<Publisher> implements Publishe
         return id;
     }
 
+    /**
+     * The method forms the entity based on resultSet
+     */
     @Override
     protected Publisher mapToEntity(ResultSet rs) throws SQLException {
         Publisher publisher = new Publisher();
@@ -45,6 +52,9 @@ public class MysqlPublisherDao extends GenericDao<Publisher> implements Publishe
         return publisher;
     }
 
+    /**
+     * The method forms the resultSet based on entity
+     */
     @Override
     protected void mapFromEntity(PreparedStatement ps, Publisher publisher) throws SQLException {
         ps.setString(1, publisher.getName());

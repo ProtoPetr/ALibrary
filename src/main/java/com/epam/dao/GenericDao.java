@@ -7,6 +7,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * This class contains generic CRUD methods
+ * for working with the database
+ */
 public abstract class GenericDao<T> {
     private static final Logger logger = LogManager.getLogger(GenericDao.class);
 
@@ -56,6 +61,10 @@ public abstract class GenericDao<T> {
         return list;
     }
 
+    /**
+     * Method dispatches values by type
+     * and adds them to prepare statement
+     */
     private <V> void dispatchType(PreparedStatement ps, int i, V value) throws SQLException {
         switch (value.getClass().getSimpleName()) {
             case "Integer":
@@ -149,7 +158,13 @@ public abstract class GenericDao<T> {
         }
     }
 
+    /**
+     * The method forms the entity based on resultSet
+     */
     protected abstract T mapToEntity(ResultSet rs) throws SQLException;
 
+    /**
+     * The method forms the resultSet based on entity
+     */
     protected abstract void mapFromEntity(PreparedStatement ps, T obj) throws SQLException;
 }

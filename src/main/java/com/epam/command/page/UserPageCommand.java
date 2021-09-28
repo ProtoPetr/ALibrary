@@ -13,13 +13,18 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This class implements Command interface
+ */
 public class UserPageCommand implements Command {
+
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
 
         BookService bss = ServiceFactory.getServiceFactory("MySQL").getBookService();
         List<Book> list = new ArrayList<>();
 
+        // define List<Book> depends on request parameter
         if (req.getParameter("genre_id") != null) {
             long genreId = Long.parseLong(req.getParameter("genre_id"));
             list = bss.getBooksByGenreId(genreId);
@@ -39,11 +44,14 @@ public class UserPageCommand implements Command {
             if (searchString != null && !searchString.trim().equals("")) {
                 list = bss.getBooksBySearch(searchString, type);
             }
-            System.out.println(list);
         } else {
             list = bss.getAllBooks();
         }
 
+        /**
+         * if session attribute currentBookList exist take it to work
+         * if not exist create and then take it
+         */
         if (req.getSession().getAttribute("currentBookList") == null) {
             req.getSession().setAttribute("currentBookList", list);
         }
@@ -53,6 +61,7 @@ public class UserPageCommand implements Command {
         String sortAction = req.getParameter("sortAction");
         req.getSession().setAttribute("sortAction", sortAction);
 
+        // apply filter parameters
         if ("sortByName".equals(req.getSession().getAttribute("sortAction"))) {
             req.getSession().setAttribute("currentBookList", currentList.stream()
                     .sorted(Comparator.comparing(Book::getName))
@@ -79,6 +88,7 @@ public class UserPageCommand implements Command {
 
         req.getSession().setAttribute("pagination", false);
 
+        // apply pagination if chosen
         if ("true".equals(req.getParameter("pagination"))) {
             req.getSession().setAttribute("pagination", true);
             int booksPerPage = 4;

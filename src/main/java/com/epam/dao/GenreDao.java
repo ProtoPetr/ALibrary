@@ -6,6 +6,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Interface declares methods for current entity
+ */
 public interface GenreDao {
     List<Genre> findAll(Connection connection, String sql) throws SQLException;
     boolean isExist(Connection connection, String sql, String name) throws SQLException;

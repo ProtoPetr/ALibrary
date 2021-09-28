@@ -19,12 +19,19 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This class implements DeliveryDeskService interface
+ * the interface is implemented according to the needs of the view layer
+ */
 public class MySqlDeliveryDeskService implements DeliveryDeskService {
     private static final Logger logger = LogManager.getLogger(MySqlDeliveryDeskService.class);
     private static BookService bss;
     private static DeliveryDeskDao deliveryDeskDao;
     private static DaoFactory daoFactory;
 
+    /**
+     * Block initializes objects for working with dao layer
+     */
     {
         try {
             bss = ServiceFactory.getServiceFactory("MySQL").getBookService();
@@ -35,6 +42,10 @@ public class MySqlDeliveryDeskService implements DeliveryDeskService {
         }
     }
 
+    /**
+     * The method find DeliveryDesk by user id
+     * if there are lease violations, a penalty is set
+     */
     @Override
     public List<DeliveryDesk> getUserDeliveryDesk(long userId) {
         Connection connection = null;
@@ -69,6 +80,10 @@ public class MySqlDeliveryDeskService implements DeliveryDeskService {
         return list;
     }
 
+    /**
+     * The method add new order in DeliveryDesk
+     * according user and book id
+     */
     @Override
     public void addBookToDeliveryDesk(long userId, long bookId) {
         Connection connection = null;
@@ -99,6 +114,12 @@ public class MySqlDeliveryDeskService implements DeliveryDeskService {
         }
     }
 
+    /**
+     * The method updates the status of a current order in delivery desk
+     * status = `issued`
+     * return day - issue day = 1
+     * decrement book count
+     */
     @Override
     public void issueBookFromDeliveryDeskOnDay(long deliveryDeskId, long bookId) {
         Connection connection = null;
@@ -126,6 +147,12 @@ public class MySqlDeliveryDeskService implements DeliveryDeskService {
         }
     }
 
+    /**
+     * The method updates the status of a current order in delivery desk
+     * status = `issued`
+     * return day - issue day = 30
+     * decrement book count
+     */
     @Override
     public void issueBookFromDeliveryDeskOnMonth(long deliveryDeskId, long bookId) {
         Connection connection = null;
@@ -153,6 +180,11 @@ public class MySqlDeliveryDeskService implements DeliveryDeskService {
         }
     }
 
+    /**
+     * The method updates the status of a current order in delivery desk
+     * status = `returned`
+     * increment book count
+     */
     @Override
     public void returnBookToDeliveryDesk(long deliveryDeskId, long bookId) {
         Connection connection = null;
@@ -180,6 +212,9 @@ public class MySqlDeliveryDeskService implements DeliveryDeskService {
         }
     }
 
+    /**
+     * The method set a penalty of a current order in delivery desk
+     */
     @Override
     public void setPenalty(long deliveryDeskId, long bookId) {
         try (Connection connection = daoFactory.getConnection()) {
@@ -189,6 +224,10 @@ public class MySqlDeliveryDeskService implements DeliveryDeskService {
         }
     }
 
+    /**
+     * The method delete current order in delivery desk
+     * according delivery desk and book id
+     */
     @Override
     public void deleteBookFromDeliveryDesk(long deliveryDeskId, long bookId) {
         try (Connection connection = daoFactory.getConnection()) {
@@ -198,6 +237,9 @@ public class MySqlDeliveryDeskService implements DeliveryDeskService {
         }
     }
 
+    /**
+     * The method find all delivery desks
+     */
     @Override
     public List<DeliveryDesk> getAllDeliveryDesk() {
         List<DeliveryDesk> list = new ArrayList<>();
@@ -210,6 +252,9 @@ public class MySqlDeliveryDeskService implements DeliveryDeskService {
         return list;
     }
 
+    /**
+     * SQL queries for DeliveryDesk entity
+     */
     enum DELIVERY_DESK_SQL {
         ADD_BOOK_TO_DELIVERY_DESK_BY_ID("INSERT INTO delivery_desk_has_book (delivery_desk_id, book_id) VALUES (?, ?)"),
         IS_USER_ID_EXIST_IN_DELIVERY_DESK("SELECT * FROM delivery_desk WHERE user_id = ?"),

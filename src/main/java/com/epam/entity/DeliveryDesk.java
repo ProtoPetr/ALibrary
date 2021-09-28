@@ -3,6 +3,10 @@ package com.epam.entity;
 import java.io.Serializable;
 import java.sql.Date;
 
+/**
+ *This class defines the deliveryDesk entity
+ * and provides an interface for working with it
+ */
 public class DeliveryDesk implements Serializable {
     private long id;
     private long userId;

@@ -5,6 +5,10 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.*;
 import java.io.IOException;
 
+/**
+ * This class creates a tag
+ * for displaying user greeting
+ */
 public class WelcomeTag extends SimpleTagSupport {
     private String name;
 

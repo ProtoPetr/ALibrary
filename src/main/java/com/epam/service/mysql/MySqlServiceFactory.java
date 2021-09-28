@@ -5,6 +5,11 @@ import com.epam.service.DeliveryDeskService;
 import com.epam.service.ServiceFactory;
 import com.epam.service.UserService;
 
+/**
+ * This class inherits from ServiceFactory
+ * Contains implementation of based class that return implementation of service interfaces
+ * for service a specific entity
+ */
 public class MySqlServiceFactory extends ServiceFactory {
     private static MySqlServiceFactory instance;
 
