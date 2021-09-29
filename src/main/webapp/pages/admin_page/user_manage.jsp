@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<jsp:useBean id="userService" class="com.epam.service.mysql.MySqlUserService" scope="page" />
+<jsp:useBean id="userService" class="com.epam.servise.mysql.MySqlUserService" scope="page" />
 
 <c:set value="${userService.findUserById(sessionScope['idUser'])}" var="user" />
 

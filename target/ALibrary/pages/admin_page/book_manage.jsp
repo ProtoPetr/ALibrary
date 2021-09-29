@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<jsp:useBean id="bookService" class="com.epam.service.mysql.MySqlBookService" scope="page"/>
+<jsp:useBean id="bookService" class="com.epam.servise.mysql.MySqlBookService" scope="page"/>
 <c:set value="${bookService.getBookById(sessionScope['idBook'])}" var="book"/>
 
 <html>

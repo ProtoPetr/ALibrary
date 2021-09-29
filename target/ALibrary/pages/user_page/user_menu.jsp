@@ -50,7 +50,7 @@
         <div class="col-3">
             <div class="list-group">
                 <h4>Жанры:</h4>
-                <jsp:useBean id="genreList" class="com.epam.service.mysql.MySqlGenreService" scope="application"/>
+                <jsp:useBean id="genreList" class="com.epam.servise.mysql.MySqlGenreService" scope="application"/>
 
                 <a href="${pageContext.request.contextPath}/controller?command=USER_PAGE"
                    class="list-group-item list-group-item-action">Все книги</a>

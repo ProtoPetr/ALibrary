@@ -2,8 +2,8 @@ package com.epam.command.page;
 
 import com.epam.command.Command;
 import com.epam.entity.Book;
-import com.epam.service.BookService;
-import com.epam.service.ServiceFactory;
+import com.epam.servise.BookService;
+import com.epam.servise.ServiceFactory;
 import com.epam.supplies.SearchType;
 
 import javax.servlet.http.HttpServletRequest;

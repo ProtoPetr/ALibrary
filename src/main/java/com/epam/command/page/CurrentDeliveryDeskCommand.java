@@ -1,8 +1,8 @@
 package com.epam.command.page;
 
 import com.epam.command.Command;
-import com.epam.service.DeliveryDeskService;
-import com.epam.service.ServiceFactory;
+import com.epam.servise.DeliveryDeskService;
+import com.epam.servise.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

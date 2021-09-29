@@ -1,8 +1,8 @@
 package com.epam.filter;
 
 import com.epam.entity.User;
-import com.epam.service.ServiceFactory;
-import com.epam.service.UserService;
+import com.epam.servise.ServiceFactory;
+import com.epam.servise.UserService;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;

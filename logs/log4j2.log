@@ -1,0 +1,426 @@
+2021-09-30 00:01:07,723 ERROR c.e.d.GenericDao [main] Scalar subquery contains more than one row; SQL statement:
+INSERT INTO book SET name = ?, author_id = (SELECT id FROM author WHERE name = ?), genre_id = (SELECT id FROM genre WHERE name = ?), publisher_id = (SELECT id FROM publisher WHERE name = ?), year_of_publishing = ?, count = ? -- (?1, (SELECT
+    ID
+FROM PUBLIC.AUTHOR
+    /* PUBLIC.AUTHOR.tableScan */
+    /* scanCount: 3 */
+WHERE NAME = ?2), (SELECT
+    ID
+FROM PUBLIC.GENRE
+    /* PUBLIC.GENRE.tableScan */
+WHERE NAME = ?3), (SELECT
+    ID
+FROM PUBLIC.PUBLISHER
+    /* PUBLIC.PUBLISHER.tableScan */
+WHERE NAME = ?4), ?5, ?6) [90053-200]
+org.h2.jdbc.JdbcSQLDataException: Scalar subquery contains more than one row; SQL statement:
+INSERT INTO book SET name = ?, author_id = (SELECT id FROM author WHERE name = ?), genre_id = (SELECT id FROM genre WHERE name = ?), publisher_id = (SELECT id FROM publisher WHERE name = ?), year_of_publishing = ?, count = ? -- (?1, (SELECT
+    ID
+FROM PUBLIC.AUTHOR
+    /* PUBLIC.AUTHOR.tableScan */
+    /* scanCount: 3 */
+WHERE NAME = ?2), (SELECT
+    ID
+FROM PUBLIC.GENRE
+    /* PUBLIC.GENRE.tableScan */
+WHERE NAME = ?3), (SELECT
+    ID
+FROM PUBLIC.PUBLISHER
+    /* PUBLIC.PUBLISHER.tableScan */
+WHERE NAME = ?4), ?5, ?6) [90053-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:590) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:205) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:181) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:170) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.expression.Subquery.getValue(Subquery.java:45) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.dml.Insert.insertRows(Insert.java:179) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.dml.Insert.update(Insert.java:151) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.CommandContainer.executeUpdateWithGeneratedKeys(CommandContainer.java:272) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:191) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.Command.executeUpdate(Command.java:251) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:191) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:152) ~[h2-1.4.200.jar:1.4.200]
+	at com.epam.dao.GenericDao.add(GenericDao.java:91) [classes/:?]
+	at com.epam.dao.mysql.MysqlBookDao.create(MysqlBookDao.java:61) [classes/:?]
+	at com.epam.dao.mysql.MysqlDeliveryDeskDaoTest.shouldReturnAllDeliveryDesks(MysqlDeliveryDeskDaoTest.java:116) [test-classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160) [junit-4.11.jar:?]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69) [junit-rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54) [junit-rt.jar:?]
+2021-09-30 00:01:07,830 ERROR c.e.d.m.MysqlDeliveryDeskDaoTest [main] null
+java.sql.SQLException: null
+	at com.epam.dao.GenericDao.add(GenericDao.java:99) ~[classes/:?]
+	at com.epam.dao.mysql.MysqlBookDao.create(MysqlBookDao.java:61) ~[classes/:?]
+	at com.epam.dao.mysql.MysqlDeliveryDeskDaoTest.shouldReturnAllDeliveryDesks(MysqlDeliveryDeskDaoTest.java:116) [test-classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160) [junit-4.11.jar:?]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69) [junit-rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54) [junit-rt.jar:?]
+2021-09-30 00:01:07,843 ERROR c.e.d.GenericDao [main] Scalar subquery contains more than one row; SQL statement:
+INSERT INTO book SET name = ?, author_id = (SELECT id FROM author WHERE name = ?), genre_id = (SELECT id FROM genre WHERE name = ?), publisher_id = (SELECT id FROM publisher WHERE name = ?), year_of_publishing = ?, count = ? -- (?1, (SELECT
+    ID
+FROM PUBLIC.AUTHOR
+    /* PUBLIC.AUTHOR.tableScan */
+    /* scanCount: 3 */
+WHERE NAME = ?2), (SELECT
+    ID
+FROM PUBLIC.GENRE
+    /* PUBLIC.GENRE.tableScan */
+WHERE NAME = ?3), (SELECT
+    ID
+FROM PUBLIC.PUBLISHER
+    /* PUBLIC.PUBLISHER.tableScan */
+WHERE NAME = ?4), ?5, ?6) [90053-200]
+org.h2.jdbc.JdbcSQLDataException: Scalar subquery contains more than one row; SQL statement:
+INSERT INTO book SET name = ?, author_id = (SELECT id FROM author WHERE name = ?), genre_id = (SELECT id FROM genre WHERE name = ?), publisher_id = (SELECT id FROM publisher WHERE name = ?), year_of_publishing = ?, count = ? -- (?1, (SELECT
+    ID
+FROM PUBLIC.AUTHOR
+    /* PUBLIC.AUTHOR.tableScan */
+    /* scanCount: 3 */
+WHERE NAME = ?2), (SELECT
+    ID
+FROM PUBLIC.GENRE
+    /* PUBLIC.GENRE.tableScan */
+WHERE NAME = ?3), (SELECT
+    ID
+FROM PUBLIC.PUBLISHER
+    /* PUBLIC.PUBLISHER.tableScan */
+WHERE NAME = ?4), ?5, ?6) [90053-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:590) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:205) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:181) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:170) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.expression.Subquery.getValue(Subquery.java:45) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.dml.Insert.insertRows(Insert.java:179) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.dml.Insert.update(Insert.java:151) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.CommandContainer.executeUpdateWithGeneratedKeys(CommandContainer.java:272) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:191) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.Command.executeUpdate(Command.java:251) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:191) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:152) ~[h2-1.4.200.jar:1.4.200]
+	at com.epam.dao.GenericDao.add(GenericDao.java:91) [classes/:?]
+	at com.epam.dao.mysql.MysqlBookDao.create(MysqlBookDao.java:61) [classes/:?]
+	at com.epam.dao.mysql.MysqlDeliveryDeskDaoTest.shouldDeleteDeliveryDesk(MysqlDeliveryDeskDaoTest.java:175) [test-classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160) [junit-4.11.jar:?]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69) [junit-rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54) [junit-rt.jar:?]
+2021-09-30 00:01:07,913 ERROR c.e.d.m.MysqlDeliveryDeskDaoTest [main] null
+java.sql.SQLException: null
+	at com.epam.dao.GenericDao.add(GenericDao.java:99) ~[classes/:?]
+	at com.epam.dao.mysql.MysqlBookDao.create(MysqlBookDao.java:61) ~[classes/:?]
+	at com.epam.dao.mysql.MysqlDeliveryDeskDaoTest.shouldDeleteDeliveryDesk(MysqlDeliveryDeskDaoTest.java:175) [test-classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160) [junit-4.11.jar:?]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69) [junit-rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54) [junit-rt.jar:?]
+2021-09-30 00:01:07,925 ERROR c.e.d.GenericDao [main] Scalar subquery contains more than one row; SQL statement:
+INSERT INTO book SET name = ?, author_id = (SELECT id FROM author WHERE name = ?), genre_id = (SELECT id FROM genre WHERE name = ?), publisher_id = (SELECT id FROM publisher WHERE name = ?), year_of_publishing = ?, count = ? -- (?1, (SELECT
+    ID
+FROM PUBLIC.AUTHOR
+    /* PUBLIC.AUTHOR.tableScan */
+    /* scanCount: 3 */
+WHERE NAME = ?2), (SELECT
+    ID
+FROM PUBLIC.GENRE
+    /* PUBLIC.GENRE.tableScan */
+WHERE NAME = ?3), (SELECT
+    ID
+FROM PUBLIC.PUBLISHER
+    /* PUBLIC.PUBLISHER.tableScan */
+WHERE NAME = ?4), ?5, ?6) [90053-200]
+org.h2.jdbc.JdbcSQLDataException: Scalar subquery contains more than one row; SQL statement:
+INSERT INTO book SET name = ?, author_id = (SELECT id FROM author WHERE name = ?), genre_id = (SELECT id FROM genre WHERE name = ?), publisher_id = (SELECT id FROM publisher WHERE name = ?), year_of_publishing = ?, count = ? -- (?1, (SELECT
+    ID
+FROM PUBLIC.AUTHOR
+    /* PUBLIC.AUTHOR.tableScan */
+    /* scanCount: 3 */
+WHERE NAME = ?2), (SELECT
+    ID
+FROM PUBLIC.GENRE
+    /* PUBLIC.GENRE.tableScan */
+WHERE NAME = ?3), (SELECT
+    ID
+FROM PUBLIC.PUBLISHER
+    /* PUBLIC.PUBLISHER.tableScan */
+WHERE NAME = ?4), ?5, ?6) [90053-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:590) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:205) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:181) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:170) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.expression.Subquery.getValue(Subquery.java:45) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.dml.Insert.insertRows(Insert.java:179) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.dml.Insert.update(Insert.java:151) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.CommandContainer.executeUpdateWithGeneratedKeys(CommandContainer.java:272) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:191) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.Command.executeUpdate(Command.java:251) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:191) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:152) ~[h2-1.4.200.jar:1.4.200]
+	at com.epam.dao.GenericDao.add(GenericDao.java:91) [classes/:?]
+	at com.epam.dao.mysql.MysqlBookDao.create(MysqlBookDao.java:61) [classes/:?]
+	at com.epam.dao.mysql.MysqlDeliveryDeskDaoTest.shouldUpdateDeliveryDesk(MysqlDeliveryDeskDaoTest.java:154) [test-classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160) [junit-4.11.jar:?]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69) [junit-rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54) [junit-rt.jar:?]
+2021-09-30 00:01:07,999 ERROR c.e.d.m.MysqlDeliveryDeskDaoTest [main] null
+java.sql.SQLException: null
+	at com.epam.dao.GenericDao.add(GenericDao.java:99) ~[classes/:?]
+	at com.epam.dao.mysql.MysqlBookDao.create(MysqlBookDao.java:61) ~[classes/:?]
+	at com.epam.dao.mysql.MysqlDeliveryDeskDaoTest.shouldUpdateDeliveryDesk(MysqlDeliveryDeskDaoTest.java:154) [test-classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160) [junit-4.11.jar:?]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69) [junit-rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54) [junit-rt.jar:?]
+2021-09-30 00:01:08,010 ERROR c.e.d.GenericDao [main] Scalar subquery contains more than one row; SQL statement:
+INSERT INTO book SET name = ?, author_id = (SELECT id FROM author WHERE name = ?), genre_id = (SELECT id FROM genre WHERE name = ?), publisher_id = (SELECT id FROM publisher WHERE name = ?), year_of_publishing = ?, count = ? -- (?1, (SELECT
+    ID
+FROM PUBLIC.AUTHOR
+    /* PUBLIC.AUTHOR.tableScan */
+    /* scanCount: 3 */
+WHERE NAME = ?2), (SELECT
+    ID
+FROM PUBLIC.GENRE
+    /* PUBLIC.GENRE.tableScan */
+WHERE NAME = ?3), (SELECT
+    ID
+FROM PUBLIC.PUBLISHER
+    /* PUBLIC.PUBLISHER.tableScan */
+WHERE NAME = ?4), ?5, ?6) [90053-200]
+org.h2.jdbc.JdbcSQLDataException: Scalar subquery contains more than one row; SQL statement:
+INSERT INTO book SET name = ?, author_id = (SELECT id FROM author WHERE name = ?), genre_id = (SELECT id FROM genre WHERE name = ?), publisher_id = (SELECT id FROM publisher WHERE name = ?), year_of_publishing = ?, count = ? -- (?1, (SELECT
+    ID
+FROM PUBLIC.AUTHOR
+    /* PUBLIC.AUTHOR.tableScan */
+    /* scanCount: 3 */
+WHERE NAME = ?2), (SELECT
+    ID
+FROM PUBLIC.GENRE
+    /* PUBLIC.GENRE.tableScan */
+WHERE NAME = ?3), (SELECT
+    ID
+FROM PUBLIC.PUBLISHER
+    /* PUBLIC.PUBLISHER.tableScan */
+WHERE NAME = ?4), ?5, ?6) [90053-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:590) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:205) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:181) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:170) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.expression.Subquery.getValue(Subquery.java:45) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.dml.Insert.insertRows(Insert.java:179) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.dml.Insert.update(Insert.java:151) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.CommandContainer.executeUpdateWithGeneratedKeys(CommandContainer.java:272) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:191) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.Command.executeUpdate(Command.java:251) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:191) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:152) ~[h2-1.4.200.jar:1.4.200]
+	at com.epam.dao.GenericDao.add(GenericDao.java:91) [classes/:?]
+	at com.epam.dao.mysql.MysqlBookDao.create(MysqlBookDao.java:61) [classes/:?]
+	at com.epam.dao.mysql.MysqlDeliveryDeskDaoTest.shouldReturnAllDeliveryDeskByUserId(MysqlDeliveryDeskDaoTest.java:135) [test-classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160) [junit-4.11.jar:?]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69) [junit-rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54) [junit-rt.jar:?]
+2021-09-30 00:01:08,082 ERROR c.e.d.m.MysqlDeliveryDeskDaoTest [main] null
+java.sql.SQLException: null
+	at com.epam.dao.GenericDao.add(GenericDao.java:99) ~[classes/:?]
+	at com.epam.dao.mysql.MysqlBookDao.create(MysqlBookDao.java:61) ~[classes/:?]
+	at com.epam.dao.mysql.MysqlDeliveryDeskDaoTest.shouldReturnAllDeliveryDeskByUserId(MysqlDeliveryDeskDaoTest.java:135) [test-classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit-4.11.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160) [junit-4.11.jar:?]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69) [junit-rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54) [junit-rt.jar:?]
+2021-09-30 00:01:08,124 ERROR c.e.d.m.MysqlDeliveryDeskDaoTest [main] Cannot drop "BOOK" because "BOOK_ID" depends on it; SQL statement:
+DROP TABLE book; [90107-200]
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "BOOK" because "BOOK_ID" depends on it; SQL statement:
+DROP TABLE book; [90107-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:576) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:205) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:98) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.ddl.DropTable.update(DropTable.java:124) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.Command.executeUpdate(Command.java:251) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.CommandList.update(CommandList.java:66) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.Command.executeUpdate(Command.java:251) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:168) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:126) ~[h2-1.4.200.jar:1.4.200]
+	at com.epam.dao.mysql.MysqlDeliveryDeskDaoTest.afterClass(MysqlDeliveryDeskDaoTest.java:198) [test-classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit-4.11.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.11.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit-4.11.jar:?]
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:33) [junit-4.11.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit-4.11.jar:?]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160) [junit-4.11.jar:?]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69) [junit-rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54) [junit-rt.jar:?]

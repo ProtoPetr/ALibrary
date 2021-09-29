@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<jsp:useBean id="deskService" class="com.epam.service.mysql.MySqlDeliveryDeskService" scope="page"/>
+<jsp:useBean id="deskService" class="com.epam.servise.mysql.MySqlDeliveryDeskService" scope="page"/>
 <c:set value="${param.userId}" var="userId"/>
 
 <html>
