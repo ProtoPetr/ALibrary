@@ -86,7 +86,7 @@
                             <div class="form-group col-6">
                                 <input type="hidden" id="searchAction" name="searchAction" value="searchByName">
                                 <input type="text" name="searchedUserName" id="searchedUserName" class="form-control"
-                                       required
+                                       required maxlength="25"
                                        placeholder="Type the Name or Last Name of the user"/>
                             </div>
                             <div class="col-2">

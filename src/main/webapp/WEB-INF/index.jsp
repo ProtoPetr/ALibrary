@@ -21,11 +21,11 @@
             <form method="post" action="${pageContext.request.contextPath}/">
                 <div class="mb-3">
                     <label for="Login" class="form-label">Login</label>
-                    <input type="text" class="form-control" name="login" id="Login">
+                    <input type="text" class="form-control" name="login" id="Login" maxlength="25">
                 </div>
                 <div class="mb-3">
                     <label for="userPassword" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="password" id="userPassword">
+                    <input type="password" class="form-control" name="password" id="userPassword" maxlength="25" minlength="2">
                 </div>
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <button class="btn btn-primary" type="submit">Sign-in</button>

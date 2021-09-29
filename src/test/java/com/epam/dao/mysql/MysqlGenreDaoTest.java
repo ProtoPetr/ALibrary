@@ -43,26 +43,27 @@ public class MysqlGenreDaoTest {
     }
 
     @Test
-    public void shouldReturnAllGenres() {
+    public void shouldReturnTrueIfGenreIsExistsByName() {
         try(Connection connection = DriverManager.getConnection(DB_URL, USER, PASS)) {
             gd.addGenre(connection, "INSERT INTO genre SET name = ?", new Genre("Фантастика"));
-            gd.addGenre(connection, "INSERT INTO genre SET name = ?", new Genre("Информатика"));
-            gd.addGenre(connection, "INSERT INTO genre SET name = ?", new Genre("Математика"));
-            List<Genre> list = gd.findAll(connection, "SELECT * FROM genre");
-            Assert.assertTrue(list.get(0).getName().equals("Фантастика") &&
-                    list.get(1).getName().equals("Информатика") &&
-                    list.get(2).getName().equals("Математика"));
+            boolean isGenreExists = gd.isExist(connection, "SELECT * FROM genre WHERE name = ?", "Фантастика");
+            Assert.assertTrue(isGenreExists);
         } catch (SQLException e) {
             logger.error(e.getMessage(), e);
         }
     }
 
     @Test
-    public void shouldReturnTrueIfGenreIsExistsByName() {
+    public void shouldReturnAllGenres() {
         try(Connection connection = DriverManager.getConnection(DB_URL, USER, PASS)) {
-            gd.addGenre(connection, "INSERT INTO genre SET name = ?", new Genre("Миф"));
-            boolean isGenreExists = gd.isExist(connection, "SELECT * FROM genre WHERE name = ?", "Миф");
-            Assert.assertTrue(isGenreExists);
+            gd.addGenre(connection, "INSERT INTO genre SET name = ?", new Genre("Фантастика"));
+            gd.addGenre(connection, "INSERT INTO genre SET name = ?", new Genre("Информатика"));
+            gd.addGenre(connection, "INSERT INTO genre SET name = ?", new Genre("Математика"));
+            List<Genre> list = gd.findAll(connection, "SELECT * FROM genre");
+            System.out.println(list);
+            Assert.assertTrue(list.get(0).getName().equals("Фантастика") &&
+                    list.get(1).getName().equals("Информатика") &&
+                    list.get(2).getName().equals("Математика"));
         } catch (SQLException e) {
             logger.error(e.getMessage(), e);
         }

@@ -48,6 +48,10 @@ public class UserPageCommand implements Command {
             list = bss.getAllBooks();
         }
 
+        if ("clear".equals(req.getParameter("clearList"))) {
+            req.getSession().setAttribute("currentBookList", null);
+        }
+
         /**
          * if session attribute currentBookList exist take it to work
          * if not exist create and then take it
@@ -85,6 +89,7 @@ public class UserPageCommand implements Command {
                     .sorted(Comparator.comparing(Book::getYearOfPublishing))
                     .collect(Collectors.toList()));
         }
+
 
         req.getSession().setAttribute("pagination", false);
 

@@ -28,7 +28,7 @@
         <br>
         <h3>Выберите раздел или используйте поиск книги</h3>
         <br>
-        <form name="search_form" method="POST" action="${pageContext.request.contextPath}/controller?command=USER_PAGE">
+        <form name="search_form" method="POST" action="${pageContext.request.contextPath}/controller?command=USER_PAGE&clearList=clear">
             <div class="row justify-content-center no-gutters">
                 <div class="col-2">
                     <select name="search_option" class="form-select no-gutters">
@@ -37,7 +37,7 @@
                     </select>
                 </div>
                 <div class="col-8 no-gutters">
-                    <input class="form-control" type="text" name="search_string"
+                    <input class="form-control" type="text" name="search_string" maxlength="50"
                            value="${sessionScope['searchString']}"/>
                 </div>
                 <div class="col-2">
@@ -52,18 +52,18 @@
                 <h4>Жанры:</h4>
                 <jsp:useBean id="genreList" class="com.epam.servise.mysql.MySqlGenreService" scope="application"/>
 
-                <a href="${pageContext.request.contextPath}/controller?command=USER_PAGE"
+                <a href="${pageContext.request.contextPath}/controller?command=USER_PAGE&clearList=clear"
                    class="list-group-item list-group-item-action">Все книги</a>
 
                 <c:forEach var="genre" items="${genreList.findAllGenres()}">
                     <c:choose>
                         <c:when test="${sessionScope['selectedGenreId'] ne 0 && sessionScope['selectedGenreId'] eq genre.getId()}">
-                            <a href="${pageContext.request.contextPath}/controller?command=USER_PAGE&genre_id=${genre.getId()}"
+                            <a href="${pageContext.request.contextPath}/controller?command=USER_PAGE&genre_id=${genre.getId()}&clearList=clear"
                                class="list-group-item list-group-item-action active"
                                aria-current="true">${genre.getName()}</a>
                         </c:when>
                         <c:otherwise>
-                            <a href="${pageContext.request.contextPath}/controller?command=USER_PAGE&genre_id=${genre.getId()}"
+                            <a href="${pageContext.request.contextPath}/controller?command=USER_PAGE&genre_id=${genre.getId()}&clearList=clear"
                                class="list-group-item list-group-item-action">${genre.getName()}</a>
                         </c:otherwise>
                     </c:choose>
@@ -78,11 +78,11 @@
                         <c:choose>
                             <c:when test="${sessionScope['searchLetter'] ne null && sessionScope['searchLetter'].toUpperCase().charAt(0) eq letter}">
                                 <a style="color:red; width: 100%; text-decoration: none; font-size: 15px; font-weight: bold;"
-                                   href="${pageContext.request.contextPath}/controller?command=USER_PAGE&letter=${letter}">${letter}</a>
+                                   href="${pageContext.request.contextPath}/controller?command=USER_PAGE&letter=${letter}&clearList=clear">${letter}</a>
                             </c:when>
                             <c:otherwise>
                                 <a style="color: #4d6cd3; width: 100%; text-decoration: none; font-size: 15px; font-weight: bold;"
-                                   href="${pageContext.request.contextPath}/controller?command=USER_PAGE&letter=${letter}">${letter}</a>
+                                   href="${pageContext.request.contextPath}/controller?command=USER_PAGE&letter=${letter}&clearList=clear">${letter}</a>
                             </c:otherwise>
                         </c:choose>
                     </div>

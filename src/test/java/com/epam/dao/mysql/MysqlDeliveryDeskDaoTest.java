@@ -189,12 +189,12 @@ public class MysqlDeliveryDeskDaoTest {
     public static void afterClass() {
         try(Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement statement = connection.createStatement()) {
-            String sql = "DROP TABLE book;\n" +
-                    "DROP TABLE author;\n" +
-                    "DROP TABLE genre;\n" +
-                    "DROP TABLE publisher;\n" +
+            String sql = "DROP TABLE delivery_desk_has_book;\n" +
                     "DROP TABLE delivery_desk;\n" +
-                    "DROP TABLE delivery_desk_has_book;\n";
+                    "DROP TABLE book;\n" +
+                    "DROP TABLE genre;\n" +
+                    "DROP TABLE author;\n" +
+                    "DROP TABLE publisher;\n";
             statement.executeUpdate(sql);
         } catch (SQLException e) {
             logger.error(e.getMessage(), e);

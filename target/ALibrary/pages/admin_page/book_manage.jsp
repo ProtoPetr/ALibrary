@@ -22,7 +22,7 @@
                 <div class="mb-3">
                     <div class="mb-3">
                         <label for="NameM" class="form-label">Name</label>
-                        <input type="text" class="form-control" required name="nameM" id="NameM"
+                        <input type="text" class="form-control" required name="nameM" id="NameM" maxlength="50"
                                value="${book.name}">
                     </div>
                     <div class="mb-3">

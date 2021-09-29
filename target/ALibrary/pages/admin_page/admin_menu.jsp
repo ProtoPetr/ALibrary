@@ -38,7 +38,7 @@ ${sessionScope['manage_book_info'] = null}
                         <div class="row justify-content-start">
                             <div class="form-group col-6">
                                 <input type="hidden" id="searchAction" name="searchAction" value="searchByName">
-                                <input type="text" name="userName" id="userName" class="form-control" required
+                                <input type="text" name="userName" id="userName" class="form-control" required maxlength="25"
                                        placeholder="Type the Name or Last Name of the user"/>
                             </div>
                             <div class="col-2">
@@ -159,7 +159,7 @@ ${sessionScope['manage_book_info'] = null}
                                   method="post" id="searchBookForm" role="form">
                                 <div class="row justify-content-start">
                                     <div class="form-group col-6">
-                                        <input type="text" name="bookName" class="form-control" required
+                                        <input type="text" name="bookName" class="form-control" required maxlength="50"
                                                placeholder="Type the Name of the book"/>
                                     </div>
                                     <div class="col-2">

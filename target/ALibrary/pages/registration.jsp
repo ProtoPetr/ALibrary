@@ -17,24 +17,24 @@
             <form class="mt-3" method="post" action="${pageContext.request.contextPath}/controller?command=CREATE_USER">
                 <div class="mb-3">
                     <label for="Login" class="form-label">Login</label>
-                    <input type="text" class="form-control" required name="loginR" id="Login">
+                    <input type="text" class="form-control" required name="loginR" id="Login" maxlength="25">
                 </div>
                 <div class="mb-3">
                     <label for="NameR" class="form-label">Name</label>
-                    <input type="text" class="form-control" name="nameR" required id="NameR">
+                    <input type="text" class="form-control" name="nameR" required id="NameR" maxlength="25">
                 </div>
                 <div class="mb-3">
                     <label for="SurNameR" class="form-label">SurName</label>
-                    <input type="text" class="form-control" name="surnameR" required id="SurNameR">
+                    <input type="text" class="form-control" name="surnameR" required id="SurNameR" maxlength="25">
                 </div>
                 <div class="mb-3">
                     <label for="mailR" class="form-label">Email address</label>
-                    <input type="email" class="form-control" name="mailR" required id="mailR" aria-describedby="emailHelp">
+                    <input type="email" class="form-control" name="mailR" required id="mailR" aria-describedby="emailHelp" maxlength="25">
                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div class="mb-3">
                     <label for="userPassword" class="form-label">Password</label>
-                    <input type="password" class="form-control" required name="passwordR" id="userPassword">
+                    <input type="password" class="form-control" required name="passwordR" id="userPassword" maxlength="25">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
