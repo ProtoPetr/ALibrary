@@ -2,7 +2,6 @@ package com.epam.command;
 
 import com.epam.command.page.*;
 import com.epam.command.page.BookDeliveryDeskCommand;
-import com.epam.command.page.CreateUserCommand;
 import com.epam.command.procedure.ShowImageCommand;
 
 /**
@@ -21,8 +20,7 @@ public enum CommandEnum {
     BOOK_MANAGE_PAGE(new BookManagePageCommand()),
     ERROR_PAGE(new ErrorPageCommand()),
     SHOW_IMAGE(new ShowImageCommand()),
-    BOOK_VS_DELIVERY_DESK(new BookDeliveryDeskCommand()),
-    CREATE_USER(new CreateUserCommand());
+    BOOK_VS_DELIVERY_DESK(new BookDeliveryDeskCommand());
 
     private Command command;
 

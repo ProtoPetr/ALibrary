@@ -2,12 +2,13 @@ package com.epam.command.page;
 
 import com.epam.command.Command;
 import com.epam.entity.User;
-import com.epam.servise.ServiceFactory;
-import com.epam.servise.UserService;
+import com.epam.serviсe.ServiceFactory;
+import com.epam.serviсe.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * This class implements Command interface
@@ -21,13 +22,15 @@ public class LibrarianPageCommand implements Command {
 
             UserService uss = ServiceFactory.getServiceFactory("MySQL").getUserService();
 
-            List<User> list = uss.getUsersBySearch(userName);
+            List<User> list = uss.getUsersBySearch(userName).stream()
+                    .filter(u -> u.getRole().equals("user")).collect(Collectors.toList());
 
             req.getSession().setAttribute("searchedUsersList", list);
 
-            req.getSession().setAttribute("search_user_status", "Was found " + list.size() + " user(s)");
+            if (!list.isEmpty()) {
+                req.getSession().setAttribute("search_user_status", "Was found " + list.size() + " user(s)");
+            }
         }
-
         return "/pages/librarian_page/librarian_menu.jsp";
     }
 }

@@ -96,7 +96,7 @@ ${sessionScope['manage_book_info'] = null}
                         </div>
                     </c:if>
 
-                    <jsp:useBean id="userService" class="com.epam.servise.mysql.MySqlUserService" scope="page"/>
+                    <jsp:useBean id="userService" class="com.epam.serviсe.mysql.MySqlUserService" scope="page"/>
                     <c:set value="${userService.findAllUsers()}" var="userList"/>
 
                     <!--Users List-->
@@ -216,7 +216,7 @@ ${sessionScope['manage_book_info'] = null}
                         </c:when>
                     </c:choose>
 
-                    <jsp:useBean id="bookService" class="com.epam.servise.mysql.MySqlBookService" scope="page"/>
+                    <jsp:useBean id="bookService" class="com.epam.serviсe.mysql.MySqlBookService" scope="page"/>
                     <c:set value="${bookService.getAllBooks()}" var="bookList"/>
 
                     <!--Books List-->

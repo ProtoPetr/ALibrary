@@ -2,8 +2,8 @@ package com.epam.command.page;
 
 import com.epam.command.Command;
 import com.epam.entity.Book;
-import com.epam.servise.BookService;
-import com.epam.servise.ServiceFactory;
+import com.epam.serviсe.BookService;
+import com.epam.serviсe.ServiceFactory;
 import com.epam.supplies.SearchType;
 
 import javax.servlet.http.HttpServletRequest;
@@ -96,11 +96,13 @@ public class UserPageCommand implements Command {
         // apply pagination if chosen
         if ("true".equals(req.getParameter("pagination"))) {
             req.getSession().setAttribute("pagination", true);
-            int booksPerPage = 4;
+            int booksPerPage;
 
             if (req.getParameter("booksPerPage") != null) {
                 booksPerPage = Integer.parseInt(req.getParameter("booksPerPage"));
                 req.getSession().setAttribute("pageItemsCount", booksPerPage);
+            } else {
+                booksPerPage = 4;
             }
 
             int allBooksCount = ((List<Book>) req.getSession().getAttribute("currentBookList")).size();

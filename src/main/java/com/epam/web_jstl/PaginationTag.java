@@ -82,35 +82,35 @@ public class PaginationTag extends BodyTagSupport {
 
             if (totalPages == 0) {
             } else if (currentPage == 1 && totalPages == 1) {
-                pageContext.getOut().write("<li class=\"page-item active\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + currentPage + "\">" + currentPage + "</a></li>");
+                pageContext.getOut().write("<li class=\"page-item active\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&booksPerPage=" + pageItemsCount + "&pagination=true&currentPage=" + currentPage + "\">" + currentPage + "</a></li>");
             } else if (currentPage == 1 && totalPages == 2) {
-                pageContext.getOut().write("<li class=\"page-item disabled\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage - 1) + "\">Previous</a></li>");
-                pageContext.getOut().write("<li class=\"page-item active\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + currentPage + "\">" + currentPage + "</a></li>");
-                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage + 1) + "\">" + (currentPage + 1) + "</a></li>");
-                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage + 1) + "\">Next</a></li>");
+                pageContext.getOut().write("<li class=\"page-item disabled\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage - 1) + "\">Previous</a></li>");
+                pageContext.getOut().write("<li class=\"page-item active\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + currentPage + "\">" + currentPage + "</a></li>");
+                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage + 1) + "\">" + (currentPage + 1) + "</a></li>");
+                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage + 1) + "\">Next</a></li>");
             } else if (currentPage == 2 && totalPages == 2) {
-                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage - 1) + "\">Previous</a></li>");
-                pageContext.getOut().write("<li class=\"page-item \"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage - 1) + "\">" + (currentPage - 1) + "</a></li>");
-                pageContext.getOut().write("<li class=\"page-item active\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + currentPage + "\">" + currentPage + "</a></li>");
-                pageContext.getOut().write("<li class=\"page-item disabled\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage + 1) + "\">Next</a></li>");
+                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage - 1) + "\">Previous</a></li>");
+                pageContext.getOut().write("<li class=\"page-item \"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage - 1) + "\">" + (currentPage - 1) + "</a></li>");
+                pageContext.getOut().write("<li class=\"page-item active\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + currentPage + "\">" + currentPage + "</a></li>");
+                pageContext.getOut().write("<li class=\"page-item disabled\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage + 1) + "\">Next</a></li>");
             } else if (currentPage == 1) {
-                pageContext.getOut().write("<li class=\"page-item disabled\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage - 1) + "\">Previous</a></li>");
-                pageContext.getOut().write("<li class=\"page-item active\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + currentPage + "\">" + currentPage + "</a></li>");
-                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage + 1) + "\">" + (currentPage + 1) + "</a></li>");
-                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage + 2) + "\">" + (currentPage + 2) + "</a></li>");
-                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage + 1) + "\">Next</a></li>");
+                pageContext.getOut().write("<li class=\"page-item disabled\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage - 1) + "\">Previous</a></li>");
+                pageContext.getOut().write("<li class=\"page-item active\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + currentPage + "\">" + currentPage + "</a></li>");
+                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage + 1) + "\">" + (currentPage + 1) + "</a></li>");
+                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage + 2) + "\">" + (currentPage + 2) + "</a></li>");
+                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage + 1) + "\">Next</a></li>");
             } else if (currentPage == totalPages) {
-                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage - 1) + "\">Previous</a></li>");
-                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage - 2) + "\">" + (currentPage - 2) + "</a></li>");
-                pageContext.getOut().write("<li class=\"page-item \"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage - 1) + "\">" + (currentPage - 1) + "</a></li>");
-                pageContext.getOut().write("<li class=\"page-item active\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + currentPage + "\">" + currentPage + "</a></li>");
-                pageContext.getOut().write("<li class=\"page-item disabled\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage + 1) + "\">Next</a></li>");
+                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage - 1) + "\">Previous</a></li>");
+                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage - 2) + "\">" + (currentPage - 2) + "</a></li>");
+                pageContext.getOut().write("<li class=\"page-item \"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage - 1) + "\">" + (currentPage - 1) + "</a></li>");
+                pageContext.getOut().write("<li class=\"page-item active\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + currentPage + "\">" + currentPage + "</a></li>");
+                pageContext.getOut().write("<li class=\"page-item disabled\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage + 1) + "\">Next</a></li>");
             } else {
-                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage - 1) + "\">Previous</a></li>");
-                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage - 1) + "\">" + (currentPage - 1) + "</a></li>");
-                pageContext.getOut().write("<li class=\"page-item active\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + currentPage + "\">" + currentPage + "</a></li>");
-                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage + 1) + "\">" + (currentPage + 1) + "</a></li>");
-                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&currentPage=" + (currentPage + 1) + "\">Next</a></li>");
+                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage - 1) + "\">Previous</a></li>");
+                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage - 1) + "\">" + (currentPage - 1) + "</a></li>");
+                pageContext.getOut().write("<li class=\"page-item active\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + currentPage + "\">" + currentPage + "</a></li>");
+                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage + 1) + "\">" + (currentPage + 1) + "</a></li>");
+                pageContext.getOut().write("<li class=\"page-item\"><a class=\"page-link\" href=\"/controller?command=USER_PAGE&pagination=true&booksPerPage=" + pageItemsCount + "&currentPage=" + (currentPage + 1) + "\">Next</a></li>");
             }
 
             pageContext.getOut().write("</ul>");

@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col align-self-start mt-3">
             <a href="${pageContext.request.contextPath}/controller?command=INDEX_PAGE" role="button" class="btn btn-outline-primary mt-3" >&lt;&lt; Back</a>
-            <form class="mt-3" method="post" action="${pageContext.request.contextPath}/controller?command=CREATE_USER">
+            <form class="mt-3" method="post" action="${pageContext.request.contextPath}/controller?command=REGISTRATION_PAGE&regAction=create">
                 <div class="mb-3">
                     <label for="Login" class="form-label">Login</label>
                     <input type="text" class="form-control" required name="loginR" id="Login" maxlength="25">
@@ -34,7 +34,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="userPassword" class="form-label">Password</label>
-                    <input type="password" class="form-control" required name="passwordR" id="userPassword" maxlength="25">
+                    <input type="password" class="form-control" required name="passwordR" id="userPassword" maxlength="25" minlength="2">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -48,7 +48,7 @@
             </c:choose>
         </div>
         <div class="col align-self-end">
-            <img src="../images/registration.jpg" class="rounded float-end" alt="стена"/>
+            <img src="../images/registration.jpg" class="rounded float-end" alt="wall"/>
         </div>
     </div>
 </div>

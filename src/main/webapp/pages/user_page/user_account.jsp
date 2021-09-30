@@ -2,8 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<jsp:useBean id="userService" class="com.epam.servise.mysql.MySqlUserService" scope="application" />
-<jsp:useBean id="deskService" class="com.epam.servise.mysql.MySqlDeliveryDeskService" scope="application" />
+<jsp:useBean id="userService" class="com.epam.serviсe.mysql.MySqlUserService" scope="application" />
+<jsp:useBean id="deskService" class="com.epam.serviсe.mysql.MySqlDeliveryDeskService" scope="application" />
 
 <c:set value="${userService.getUserByLoginPassword(sessionScope['login'], sessionScope['password'])}" var="user"/>
 <c:set value="${user.getId()}" var="userId"/>

@@ -2,9 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<jsp:useBean id="userService" class="com.epam.servise.mysql.MySqlUserService" scope="application"/>
-<jsp:useBean id="deskService" class="com.epam.servise.mysql.MySqlDeliveryDeskService" scope="application"/>
-<jsp:useBean id="bookService" class="com.epam.servise.mysql.MySqlBookService" scope="application"/>
+<jsp:useBean id="userService" class="com.epam.serviсe.mysql.MySqlUserService" scope="application"/>
+<jsp:useBean id="deskService" class="com.epam.serviсe.mysql.MySqlDeliveryDeskService" scope="application"/>
+<jsp:useBean id="bookService" class="com.epam.serviсe.mysql.MySqlBookService" scope="application"/>
 
 <c:set value="${userService.getUserByLoginPassword(sessionScope['login'], sessionScope['password'])}" var="user"/>
 
@@ -157,8 +157,13 @@
                                 <td>${userDesk.surname}</td>
                                 <td>${userDesk.mail}</td>
                                 <td>
-                                    <a href="${pageContext.request.contextPath}/controller?command=CURRENT_DELIVERY_DESK_PAGE&userId=${userDesk.id}&userName=${userDesk.name}&userSurname=${userDesk.surname}&deskId=${currentDesk.get(0).getId()}&accordionInfo=2">
-                                            ${currentDesk.get(0).getId()}</a></td>
+                                    <c:if test="${!currentDesk.isEmpty()}">
+
+                                        <a href="${pageContext.request.contextPath}/controller?command=CURRENT_DELIVERY_DESK_PAGE&userId=${userDesk.id}&userName=${userDesk.name}&userSurname=${userDesk.surname}&deskId=${currentDesk.get(0).getId()}&accordionInfo=2">
+                                                ${currentDesk.get(0).getId()}</a>
+
+                                    </c:if>
+                                </td>
                                 <td>${userDesk.status}</td>
                             </tr>
                         </c:forEach>

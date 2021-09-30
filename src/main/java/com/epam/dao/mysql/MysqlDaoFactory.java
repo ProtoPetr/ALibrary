@@ -20,7 +20,7 @@ import java.sql.SQLException;
 public class MysqlDaoFactory extends DaoFactory {
     private static final Logger logger = LogManager.getLogger(MysqlDaoFactory.class);
     private static MysqlDaoFactory instance;
-    private final DataSource ds;
+    private static DataSource ds ;
 
     private MysqlDaoFactory() {
         Context initContext;
@@ -32,6 +32,7 @@ public class MysqlDaoFactory extends DaoFactory {
         } catch (NamingException e) {
             logger.error(e.getMessage(), e);
             throw new IllegalStateException("Can not init MysqlDaoFactory, e");
+
         }
     }
 

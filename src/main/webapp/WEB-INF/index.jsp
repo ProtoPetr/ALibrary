@@ -1,5 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<fmt:setLocale value="en"/>--%>
+<%--<fmt:setBundle basename="resourses.prop" var="prop" scope="session"/>--%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -12,7 +15,10 @@
     <div class="row">
         <div class="col align-self-start mt-3 mx-lg-5">
             <div class="m-3">
-                <h4>Library of Alexandria welcomes you my young Christian! </h4>
+                <h4>
+<%--                    <fmt:message key="index.greeting" bundle="${prop}"/>--%>
+                    Library of Alexandria welcomes you my young Christian!
+                </h4>
                 <br>
                 <br>
                 <h5>In order to use the services of the library, enter your credentials</h5>
@@ -25,7 +31,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="userPassword" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="password" id="userPassword" maxlength="25" minlength="2">
+                    <input type="password" class="form-control" name="password" id="userPassword" maxlength="25"
+                           minlength="2">
                 </div>
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <button class="btn btn-primary" type="submit">Sign-in</button>
